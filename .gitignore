@@ -1,0 +1,4 @@
+.ssh/id_*
+.ssh/identity*
+.ssh/known_hosts
+.ssh/authorized_keys
