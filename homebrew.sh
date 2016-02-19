@@ -18,3 +18,4 @@ brew tap caskroom/cask
 
 brew cask install google-chrome
 brew cask install shiftit
+brew cask install flux
