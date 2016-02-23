@@ -4,6 +4,8 @@ if ! hash brew 2>/dev/null; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+brew update
+
 brew install macvim
 brew install git
 brew install wget
@@ -19,3 +21,5 @@ brew tap caskroom/cask
 brew cask install google-chrome
 brew cask install shiftit
 brew cask install flux
+
+brew upgrade
