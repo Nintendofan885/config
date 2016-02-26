@@ -19,7 +19,13 @@ brew install python3
 brew install gnupg
 
 brew cask install google-chrome
+brew cask install google-drive
+brew cask install firefox
 brew cask install shiftit
 brew cask install flux
+brew cask install limechat
+brew cask install intellij-idea
+brew cask install keepassx
+brew cask install caffeine
 
 brew upgrade
