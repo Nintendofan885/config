@@ -8,24 +8,28 @@ brew tap caskroom/cask
 
 brew update
 
-brew install macvim
-brew install git
-brew install wget
+# Web dev
 brew install node
-brew install postgresql
 brew install php56
 brew install php56-pdo-pgsql
-brew install python3
-brew install gnupg
+brew install postgresql
 
+# Misc tools
+brew install macvim
+brew install git
+brew install git-review # Used for gerrit
+brew install wget
+brew install gnupg
+brew install python3
+
+brew cask install shiftit # Window snapping
+brew cask install caffeine # Disable automatic sleep
+brew cask install limechat # IRC client
+brew cask install keepassx # KeePass tool
 brew cask install google-chrome
 brew cask install google-drive
 brew cask install firefox
-brew cask install shiftit
-brew cask install flux
-brew cask install limechat
+brew cask install flux # Screen temperature adjuster
 brew cask install intellij-idea
-brew cask install keepassx
-brew cask install caffeine
 
 brew upgrade
