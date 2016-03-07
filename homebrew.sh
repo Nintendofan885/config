@@ -4,8 +4,6 @@ if ! hash brew 2>/dev/null; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-brew tap caskroom/cask
-
 brew update
 
 # Web dev
@@ -31,5 +29,6 @@ brew cask install google-drive
 brew cask install firefox
 brew cask install flux # Screen temperature adjuster
 brew cask install intellij-idea
+brew cask install google-play-music-desktop-player
 
 brew upgrade
