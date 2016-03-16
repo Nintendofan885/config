@@ -5,3 +5,5 @@ complete -o default -o nospace -W"$(find $HOME/.virtualenvs -name "activate")" s
 export PS1="\w\$ "
 
 export HOMEBREW_GITHUB_API_TOKEN=thishasbeensanitized
+
+alias grep="`which grep` --color=always"
