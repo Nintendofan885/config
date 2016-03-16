@@ -19,6 +19,7 @@ brew install git-review # Used for gerrit
 brew install wget
 brew install gnupg
 brew install python3
+brew install enchant # needed as dependency for scikit-learn
 
 brew cask install shiftit # Window snapping
 brew cask install caffeine # Disable automatic sleep
