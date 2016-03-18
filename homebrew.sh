@@ -20,6 +20,12 @@ brew install wget
 brew install gnupg
 brew install python3
 brew install enchant # needed as dependency for scikit-learn
+brew install bash-completion # _get_comp_words_by_ref needs newer version than default
+
+# Docker
+brew cask install virtualbox
+brew install docker
+brew install docker-machine
 
 brew cask install shiftit # Window snapping
 brew cask install caffeine # Disable automatic sleep
