@@ -37,5 +37,6 @@ brew cask install firefox
 brew cask install flux # Screen temperature adjuster
 brew cask install intellij-idea
 brew cask install google-play-music-desktop-player
+brew cask install skype
 
 brew upgrade
