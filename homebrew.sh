@@ -18,6 +18,7 @@ brew install git
 brew install git-review # Used for gerrit
 brew install wget
 brew install gnupg
+brew install python
 brew install python3
 brew install enchant # needed as dependency for scikit-learn
 brew install bash-completion # _get_comp_words_by_ref needs newer version than default
