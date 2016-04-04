@@ -40,5 +40,8 @@ brew cask install intellij-idea
 brew cask install google-play-music-desktop-player
 brew cask install skype
 brew cask install filezilla
+brew cask install qbittorrent
+brew cask install vlc
 
 brew upgrade --cleanup
+brew cask cleanup
