@@ -42,6 +42,7 @@ brew cask install skype
 brew cask install filezilla
 brew cask install qbittorrent
 brew cask install vlc
+brew cask install libreoffice
 
 brew upgrade --cleanup
 brew cask cleanup
