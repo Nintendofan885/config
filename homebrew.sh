@@ -22,6 +22,7 @@ brew install python
 brew install python3
 brew install enchant # needed as dependency for scikit-learn
 brew install bash-completion # _get_comp_words_by_ref needs newer version than default
+brew install redis
 
 # Docker
 brew cask install virtualbox
@@ -42,6 +43,9 @@ brew cask install skype
 brew cask install filezilla
 brew cask install qbittorrent
 brew cask install vlc
+brew cask install kodi
+brew cask install steam
+brew cask install airvpn
 brew cask install libreoffice
 
 brew upgrade --cleanup
