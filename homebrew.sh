@@ -23,6 +23,7 @@ brew install python3
 brew install enchant # needed as dependency for scikit-learn
 brew install bash-completion # _get_comp_words_by_ref needs newer version than default
 brew install redis
+brew install android-platform-tools
 
 # Docker
 brew cask install virtualbox
