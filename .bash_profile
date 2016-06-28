@@ -1,4 +1,5 @@
-alias ll='ls -laG'
+alias ll='ls -la'
+alias grep="`which grep` --color=always"
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -13,7 +14,6 @@ source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine-wrappe
 source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine.bash
 
 export PS1="$(__docker_machine_ps1)\w\$ "
+export CLICOLOR=true # enable color for ls
 
 source ~/.github_tokens.sh
-
-alias grep="`which grep` --color=always"
