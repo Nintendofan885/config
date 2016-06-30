@@ -1,3 +1,4 @@
+alias ls='ls --color=auto'
 alias ll='ls -la'
 alias grep="`which grep` --color=always"
 
@@ -14,6 +15,7 @@ source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine-wrappe
 source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine.bash
 
 export PS1="$(__docker_machine_ps1)\w\$ "
-export CLICOLOR=true # enable color for ls
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 source ~/.github_tokens.sh

@@ -13,6 +13,7 @@ brew install php56-pdo-pgsql
 brew install postgresql
 
 # Misc tools
+brew install coreutils
 brew install macvim
 brew install git
 brew install git-review # Used for gerrit
