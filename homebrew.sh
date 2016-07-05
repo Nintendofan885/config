@@ -27,6 +27,9 @@ brew install redis
 brew install android-platform-tools
 brew install elixir
 
+# Used to update casks
+brew install vitorgalvao/tiny-scripts/cask-repair
+
 # Docker
 brew cask install virtualbox
 brew install docker
