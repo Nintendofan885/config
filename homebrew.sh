@@ -102,15 +102,18 @@ function cleanup_old_cask_versions {
     for (( i=0; i<${cask_count}; i++ ))
     do
         cask=${installed_casks[$i]}
-        current_version=$(brew cask info $cask | head -n1 | cut -d' ' -f2)
-        for version in $(ls $CASKROOM/$cask)
-        do
-            if [ "$current_version" != "$version" ]
-            then
-                echo "$CASKROOM/$cask/$version is replaced by $current_version"
-                rm -rf $CASKROOM/$cask/$version
-            fi
-        done
+        if (( $(ls -l $CASKROOM/$cask | wc -l) > 2 ))
+        then
+            current_version=$(brew cask info $cask | head -n1 | cut -d' ' -f2)
+            for version in $(ls $CASKROOM/$cask)
+            do
+                if [ "$current_version" != "$version" ]
+                then
+                    echo "$CASKROOM/$cask/$version is replaced by $current_version"
+                    rm -rf $CASKROOM/$cask/$version
+                fi
+            done
+        fi
         echo -en "Processed $((i + 1))/${cask_count}\r"
     done
     echo
