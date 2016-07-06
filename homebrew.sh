@@ -1,58 +1,153 @@
 #!/bin/bash
 
-if ! hash brew 2>/dev/null; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+packages=(
+    # web dev
+    node
+    php56
+    php56-pdo-pgsql
+    postgresql
+    # misc tools
+    coreutils
+    macvim
+    git
+    git-review # used for gerrit
+    wget
+    gnupg
+    python
+    python3
+    enchant # needed as dependency for scikit-learn
+    bash-completion # _get_comp_words_by_ref needs newer version than default
+    redis
+    android-platform-tools
+    elixir
+    cask-repair # used to update casks
+    # vitorgalvao/tiny-scripts/cask-repair # used to update casks
+    docker
+    docker-machine
+)
 
+CASKROOM="/usr/local/Caskroom"
+casks=(
+    virtualbox # needed for docker
+    shiftit # window snapping
+    caffeine # disable automatic sleep with toggle
+    limechat # irc client
+    keepassx
+    google-chrome
+    google-drive
+    firefox
+    flux # screen temperature adjuster
+    intellij-idea
+    google-play-music-desktop-player
+    skype
+    filezilla
+    qbittorrent
+    vlc
+    kodi
+    steam
+    airvpn
+    libreoffice
+)
+
+installed_packages=($(brew list))
+installed_casks=($(brew cask list))
+
+function status_update {
+    BLUE='\033[1;34m'
+    WHITE='\033[1;97m'
+    NC='\033[0m'
+    echo -e "${BLUE}==> ${WHITE}${1}${NC}"
+}
+
+function contains_element {
+    local element
+    for element in "${@:2}"
+    do
+        if [[ "$element" == "$1" ]]
+        then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function ensure_homebrew_is_installed {
+    status_update "Ensuring homebrew is installed"
+    if ! hash brew 2>/dev/null
+    then
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        echo "Already installed"
+    fi
+}
+
+function ensure_installed {
+    if ! contains_element "$1" "${installed_packages[@]}"
+    then
+        brew install $1
+    fi
+}
+
+function ensure_cask_installed {
+    if ! contains_element "$1" "${installed_casks[@]}"
+    then
+        brew cask install $1
+    fi
+}
+
+function cleanup_old_cask_versions {
+    status_update "Removing old cask versions"
+    installed_casks=($(brew cask list))
+    cask_count=${#installed_casks[@]}
+    for (( i=0; i<${cask_count}; i++ ))
+    do
+        cask=${installed_casks[$i]}
+        current_version=$(brew cask info $cask | head -n1 | cut -d' ' -f2)
+        for version in $(ls $CASKROOM/$cask)
+        do
+            if [ "$current_version" != "$version" ]
+            then
+                echo "$CASKROOM/$cask/$version is replaced by $current_version"
+                rm -rf $CASKROOM/$cask/$version
+            fi
+        done
+        echo -en "Processed $((i + 1))/${cask_count}\r"
+    done
+    echo
+}
+
+################################################################
+
+ensure_homebrew_is_installed
+
+status_update "Updating homebrew"
 brew update
 
-# Web dev
-brew install node
-brew install php56
-brew install php56-pdo-pgsql
-brew install postgresql
+status_update "Installing packages"
+package_count=${#packages[@]}
+for (( i=0; i<${package_count}; i++ ))
+do
+    ensure_installed "${packages[$i]}"
+    echo -en "Processed $((i + 1))/${package_count}\r"
+done
+echo
 
-# Misc tools
-brew install coreutils
-brew install macvim
-brew install git
-brew install git-review # Used for gerrit
-brew install wget
-brew install gnupg
-brew install python
-brew install python3
-brew install enchant # needed as dependency for scikit-learn
-brew install bash-completion # _get_comp_words_by_ref needs newer version than default
-brew install redis
-brew install android-platform-tools
-brew install elixir
+status_update "Installing casks"
+cask_count=${#casks[@]}
+for (( i=0; i<${cask_count}; i++ ))
+do
+    ensure_cask_installed "${casks[$i]}"
+    echo -en "Processed $((i + 1))/${cask_count}\r"
+done
+echo
 
-# Used to update casks
-brew install vitorgalvao/tiny-scripts/cask-repair
+status_update "Upgrading packages"
+brew upgrade
 
-# Docker
-brew cask install virtualbox
-brew install docker
-brew install docker-machine
+status_update "Cleaning up packages"
+brew cleanup
 
-brew cask install shiftit # Window snapping
-brew cask install caffeine # Disable automatic sleep
-brew cask install limechat # IRC client
-brew cask install keepassx # KeePass tool
-brew cask install google-chrome
-brew cask install google-drive
-brew cask install firefox
-brew cask install flux # Screen temperature adjuster
-brew cask install intellij-idea
-brew cask install google-play-music-desktop-player
-brew cask install skype
-brew cask install filezilla
-brew cask install qbittorrent
-brew cask install vlc
-brew cask install kodi
-brew cask install steam
-brew cask install airvpn
-brew cask install libreoffice
-
-brew upgrade --cleanup
+status_update "Cleaning up casks"
 brew cask cleanup
+
+cleanup_old_cask_versions
