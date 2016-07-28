@@ -3,7 +3,7 @@
 packages=(
     # web dev
     node
-    php56
+    homebrew/php/php56
     php56-pdo-pgsql
     postgresql
     # misc tools
@@ -20,8 +20,7 @@ packages=(
     redis
     android-platform-tools
     elixir
-    cask-repair # used to update casks
-    # vitorgalvao/tiny-scripts/cask-repair # used to update casks
+    vitorgalvao/tiny-scripts/cask-repair # used to update casks
     docker
     docker-machine
 )
@@ -82,7 +81,7 @@ function ensure_homebrew_is_installed {
 }
 
 function ensure_installed {
-    if ! contains_element "$1" "${installed_packages[@]}"
+if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_packages[@]}"
     then
         brew install $1
     fi
