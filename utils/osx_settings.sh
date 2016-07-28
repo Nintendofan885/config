@@ -22,6 +22,9 @@ defaults write com.apple.finder AppleShowAllFiles YES
 /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:ShowActiveProcessInTitle 1" $HOME/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:ShowShellCommandInTitle 0" $HOME/Library/Preferences/com.apple.Terminal.plist
 
+# Disable navigation with swipe gesture
+defaults write 'Apple Global Domain' AppleEnableSwipeNavigateWithScrolls -integer 0
+
 # Add login items
 for item in Caffeine Flux 'Google Drive' 'Google Play Music Desktop Player' ShiftIt; do
     ./add_login_item.scpt "$item" "/Applications/$item.app" true
