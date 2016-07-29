@@ -1,6 +1,7 @@
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias grep="`which grep` --color=always"
+alias homebrew_me_harder='~/git/config/utils/homebrew.sh'
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion

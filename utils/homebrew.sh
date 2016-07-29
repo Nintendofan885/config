@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname $0)/homebrew_utils.sh"
+
 packages=(
     # web dev
     node
@@ -50,8 +52,6 @@ casks=(
     airvpn
     libreoffice
 )
-
-source ./homebrew_utils.sh
 
 ################################################################
 
