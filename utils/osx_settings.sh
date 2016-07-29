@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-# Dock
-/usr/libexec/PlistBuddy -c "Set :tilesize 46" $HOME/Library/Preferences/com.apple.dock.plist
-/usr/libexec/PlistBuddy -c "Set :autohide 1" $HOME/Library/Preferences/com.apple.dock.plist
-/usr/libexec/PlistBuddy -c "Set :magnification 1" $HOME/Library/Preferences/com.apple.dock.plist
+./set_preferences.applescript >/dev/null
 
 # Show hidden files in Finder
 defaults write com.apple.finder AppleShowAllFiles YES
@@ -22,10 +19,13 @@ defaults write com.apple.finder AppleShowAllFiles YES
 /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:ShowActiveProcessInTitle 1" $HOME/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Set :'Window Settings':Pro:ShowShellCommandInTitle 0" $HOME/Library/Preferences/com.apple.Terminal.plist
 
+# Disable auto adjust screen brightness
+/usr/libexec/PlistBuddy -c "Set :'Automatic Display Enabled' 0" /Library/Preferences/com.apple.iokit.AmbientLightSensor.plist
+
 # Disable navigation with swipe gesture
 defaults write 'Apple Global Domain' AppleEnableSwipeNavigateWithScrolls -integer 0
 
 # Add login items
 for item in Caffeine Flux 'Google Drive' 'Google Play Music Desktop Player' ShiftIt; do
-    ./add_login_item.scpt "$item" "/Applications/$item.app" true
+    ./add_login_item.applescript "$item" "/Applications/$item.app" true
 done
