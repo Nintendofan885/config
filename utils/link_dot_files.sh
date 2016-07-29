@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mkdir -p ~/.ssh
 mkdir -p ~/.virtualenvs

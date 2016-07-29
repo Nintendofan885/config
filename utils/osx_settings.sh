@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Dock
 /usr/libexec/PlistBuddy -c "Set :tilesize 46" $HOME/Library/Preferences/com.apple.dock.plist

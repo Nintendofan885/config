@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ./accept_xcode_license.sh
 ./link_dot_files.sh

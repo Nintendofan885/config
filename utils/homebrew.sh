@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 packages=(
     # web dev
@@ -16,6 +16,7 @@ packages=(
     python
     python3
     enchant # needed as dependency for scikit-learn
+    aspell
     bash-completion # _get_comp_words_by_ref needs newer version than default
     redis
     android-platform-tools
@@ -24,6 +25,8 @@ packages=(
     docker
     docker-machine
 )
+
+declare -A package_options=(['aspell']='--with-all-langs')
 
 CASKROOM="/usr/local/Caskroom"
 casks=(
@@ -83,7 +86,7 @@ function ensure_homebrew_is_installed {
 function ensure_installed {
 if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_packages[@]}"
     then
-        brew install $1
+        brew install $1 ${package_options[$1]}
     fi
 }
 
