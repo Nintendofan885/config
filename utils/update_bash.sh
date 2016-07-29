@@ -7,4 +7,6 @@ ensure_installed bash
 
 new_shell='/usr/local/bin/bash'
 grep $new_shell /etc/shells >/dev/null || sudo bash -c "echo $new_shell >> /etc/shells"
-chsh -s $new_shell
+if [ "$new_shell" != "$(which bash)" ]; then
+    chsh -s $new_shell
+fi
