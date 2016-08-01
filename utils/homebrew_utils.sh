@@ -35,7 +35,7 @@ function ensure_homebrew_is_installed {
 function ensure_installed {
 if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_packages[@]}"
     then
-        brew install $1 ${package_options["$1"]}
+        brew install $@
     fi
 }
 

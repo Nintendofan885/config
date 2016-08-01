@@ -64,7 +64,7 @@ status_update "Installing packages"
 package_count=${#packages[@]}
 for (( i=0; i<${package_count}; i++ ))
 do
-    ensure_installed "${packages[$i]}"
+    ensure_installed "${packages[$i]}" ${package_options["${packages[$i]}"]}
     echo -en "Processed $((i + 1))/${package_count}\r"
 done
 echo
