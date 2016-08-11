@@ -33,14 +33,14 @@ function ensure_homebrew_is_installed {
 }
 
 function ensure_installed {
-if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_packages[@]}"
+    if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_packages[@]}"
     then
         brew install $@
     fi
 }
 
 function ensure_cask_installed {
-    if ! contains_element "$1" "${installed_casks[@]}"
+    if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_casks[@]}"
     then
         brew cask install $1
     fi
