@@ -10,6 +10,7 @@ packages=(
     postgresql
     # misc tools
     coreutils
+    pandoc
     macvim
     git
     git-review # used for gerrit
@@ -51,6 +52,7 @@ casks=(
     steam
     airvpn
     libreoffice
+    osxfuse-beta
 )
 
 ################################################################
