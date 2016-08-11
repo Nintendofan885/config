@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+CASKROOM="`brew --prefix`/Caskroom"
 installed_packages=($(brew list))
 installed_casks=($(brew cask list))
 

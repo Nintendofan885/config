@@ -31,7 +31,6 @@ packages=(
 
 declare -A package_options=(['aspell']='--with-all-langs')
 
-CASKROOM="/usr/local/Caskroom"
 casks=(
     virtualbox # needed for docker
     shiftit # window snapping
