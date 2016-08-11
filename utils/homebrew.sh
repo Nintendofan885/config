@@ -27,6 +27,7 @@ packages=(
     vitorgalvao/tiny-scripts/cask-repair # used to update casks
     docker
     docker-machine
+#    homebrew/fuse/ext2fuse # used for mounting ext filesystems
 )
 
 declare -A package_options=(['aspell']='--with-all-langs')
@@ -51,7 +52,7 @@ casks=(
     steam
     airvpn
     libreoffice
-    osxfuse-beta
+#    osxfuse-beta # used for mounting different filesystems
 )
 
 ################################################################
