@@ -1,4 +1,5 @@
-filetype plugin indent off
+filetype plugin indent on
+filetype indent off
 syntax on
 set backspace=indent,eol,start
 au BufNewFile,BufRead *.tag set filetype=html
