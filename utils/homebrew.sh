@@ -87,7 +87,7 @@ status_update "Cleaning up packages"
 brew cleanup
 
 status_update "Cleaning up casks"
-brew cask cleanup
+brew cask cleanup --outdated
 
 cleanup_old_cask_versions
 

@@ -41,9 +41,16 @@ function ensure_installed {
 }
 
 function ensure_cask_installed {
-    if ! contains_element "$(echo "$1" | rev | cut -d'/' -f1 | rev)" "${installed_casks[@]}"
+    installed_version="not installed"
+    manifest_version=""
+    if (( $(ls -l $CASKROOM/$1 | wc -l) > 1 ))
     then
-        brew cask install $1
+        installed_version=$(get_cask_installed_version $1)
+        manifest_version=$(get_cask_manifest_version $1)
+    fi
+    if [ "$installed_version" != "$manifest_version" ] # this ignores 'latest' versions, which is okay for now
+    then
+        brew cask install --force $1
     fi
 }
 
@@ -56,7 +63,7 @@ function cleanup_old_cask_versions {
         cask=${installed_casks[$i]}
         if (( $(ls -l $CASKROOM/$cask | wc -l) > 2 ))
         then
-            current_version=$(brew cask info $cask | head -n1 | cut -d' ' -f2)
+            current_version=$(get_cask_installed_version $cask)
             for version in $(ls $CASKROOM/$cask)
             do
                 if [ "$current_version" != "$version" ]
@@ -69,4 +76,12 @@ function cleanup_old_cask_versions {
         echo -en "Processed $((i + 1))/${cask_count}\r"
     done
     echo
+}
+
+function get_cask_installed_version {
+    echo $(brew cask list $1 | grep "Staged content:" -A 1 | tail -n1 | cut -d' ' -f1 | sed "s|`echo $CASKROOM/$1/`||")
+}
+
+function get_cask_manifest_version {
+    echo $(brew cask info $1 | head -n1 | cut -d' ' -f2)
 }
