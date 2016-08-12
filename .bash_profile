@@ -10,12 +10,13 @@ fi
 complete -o default -o nospace -W"$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 complete -o default -o nospace -W"$(find $HOME/.virtualenvs -name "activate")" source
 
-# docker machine completion and ps1
-source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine-prompt.bash
-source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine-wrapper.bash
-source /usr/local/opt/docker-machine/etc/bash_completion.d/docker-machine.bash
+GIT_PS1_SHOWDIRTYSTATE=1 # unstaged (*), staged (+)
+GIT_PS1_SHOWSTASHSTATE=1 # stashed ($)
+GIT_PS1_SHOWUNTRACKEDFILES=1 # untracked (%)
+GIT_PS1_SHOWUPSTREAM="auto" # behind (<), ahead (>), diverged (<>), no difference (=)
 
-export PS1="$(__docker_machine_ps1)\w\$ "
+export PS1='$(__git_ps1 "(%s) ")\w\$ '
+
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
