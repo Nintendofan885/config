@@ -41,16 +41,20 @@ function ensure_installed {
 }
 
 function ensure_cask_installed {
-    installed_version="not installed"
-    manifest_version=""
-    if (( $(ls -l $CASKROOM/$1 | wc -l) > 1 ))
-    then
-        installed_version=$(get_cask_installed_version $1)
-        manifest_version=$(get_cask_manifest_version $1)
-    fi
-    if [ "$installed_version" != "$manifest_version" ] # this ignores 'latest' versions, which is okay for now
+    cask_info=$(brew cask info $1)
+    echo "$cask_info" | grep 'Not installed' &>/dev/null
+    is_not_installed=$?
+    if [ $is_not_installed -eq 0 ]
     then
         brew cask install --force $1
+    else
+        manifest_version=$(echo "$cask_info" | head -n1 | cut -d' ' -f2)
+        echo "$cask_info" | tail -n +2 | grep $manifest_version &>/dev/null
+        is_manifest_version_present=$?
+        if [ $is_manifest_version_present -ne 0 ]
+        then
+            brew cask install --force $1
+        fi
     fi
 }
 
@@ -61,15 +65,16 @@ function cleanup_old_cask_versions {
     for (( i=0; i<${cask_count}; i++ ))
     do
         cask=${installed_casks[$i]}
-        if (( $(ls -l $CASKROOM/$cask | wc -l) > 2 ))
+        if (( $(ls -l $CASKROOM/$cask/.metadata | wc -l) > 2 ))
         then
-            current_version=$(get_cask_installed_version $cask)
-            for version in $(ls $CASKROOM/$cask)
+            current_version=$(get_cask_manifest_version $cask)
+            for version in $(ls $CASKROOM/$cask/.metadata)
             do
                 if [ "$current_version" != "$version" ]
                 then
                     echo "$CASKROOM/$cask/$version is replaced by $current_version"
                     rm -rf $CASKROOM/$cask/$version
+                    rm -rf $CASKROOM/$cask/.metadata/$version
                 fi
             done
         fi
