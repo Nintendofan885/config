@@ -25,15 +25,12 @@ packages=(
     android-platform-tools
     elixir
     vitorgalvao/tiny-scripts/cask-repair # used to update casks
-    docker
-    docker-machine
 #    homebrew/fuse/ext2fuse # used for mounting ext filesystems
 )
 
 declare -A package_options=(['aspell']='--with-all-langs')
 
 casks=(
-    virtualbox # needed for docker
     shiftit # window snapping
     caffeine # disable automatic sleep with toggle
     limechat # irc client
@@ -53,6 +50,7 @@ casks=(
     steam
     airvpn
     libreoffice
+    docker
 #    osxfuse-beta # used for mounting different filesystems
 )
 
