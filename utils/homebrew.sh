@@ -51,6 +51,8 @@ casks=(
     airvpn
     libreoffice
     docker
+    kitematic
+    tunnelblick
 #    osxfuse-beta # used for mounting different filesystems
 )
 
