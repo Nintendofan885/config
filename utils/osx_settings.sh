@@ -5,6 +5,9 @@
 # Show hidden files in Finder
 defaults write com.apple.finder AppleShowAllFiles YES
 
+# set mouse scroll acceleration
+defaults write .GlobalPreferences com.apple.scrollwheel.scaling 0.3125
+
 # Terminal defaults
 /usr/libexec/PlistBuddy -c "Set :'Default Window Settings' Pro" $HOME/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Set :'Startup Window Settings' Pro" $HOME/Library/Preferences/com.apple.Terminal.plist
