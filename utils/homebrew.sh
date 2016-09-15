@@ -53,6 +53,13 @@ casks=(
     docker
     kitematic
     tunnelblick
+    # karabiner is used to remap keys, but I'm using it to set the trackpad scroll
+    #  direction to be opposite of the mouse with the following settings:
+    #  - Karabiner Preferences > Change Key > Karabiner core settings >
+    #    Exclude devices > Don't remap Apple's pointing devices
+    #  - Karabiner Preferences > Change Key > Pointing Device >
+    #    Reverse scrolling direction > Reverse Vertical Scrolling
+    karabiner
 #    osxfuse-beta # used for mounting different filesystems
 )
 
