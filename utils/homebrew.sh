@@ -25,6 +25,7 @@ packages=(
     android-platform-tools
     elixir
     vitorgalvao/tiny-scripts/cask-repair # used to update casks
+    nmap
 #    homebrew/fuse/ext2fuse # used for mounting ext filesystems
 )
 
