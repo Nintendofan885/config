@@ -49,7 +49,6 @@ casks=(
     vlc
     kodi
     steam
-    airvpn
     libreoffice
     docker
     kitematic
