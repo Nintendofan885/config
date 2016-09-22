@@ -3,7 +3,7 @@
 mkdir -p ~/.ssh
 mkdir -p ~/.virtualenvs
 
-for file in .bash_profile .vimrc .ssh/config; do
+for file in .bash_profile .vimrc .ssh/config .pypirc; do
     rm ~/$file
     ln -s ~/git/config/$file ~/$file
 done

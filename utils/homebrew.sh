@@ -59,7 +59,8 @@ casks=(
     #    Exclude devices > Don't remap Apple's pointing devices
     #  - Karabiner Preferences > Change Key > Pointing Device >
     #    Reverse scrolling direction > Reverse Vertical Scrolling
-    karabiner
+    # doesn't work in macOS sierra
+    # karabiner
 #    osxfuse-beta # used for mounting different filesystems
 )
 
