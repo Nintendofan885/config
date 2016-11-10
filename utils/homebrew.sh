@@ -26,6 +26,7 @@ packages=(
     elixir
     vitorgalvao/tiny-scripts/cask-repair # used to update casks
     nmap
+    gnu-sed
 #    homebrew/fuse/ext2fuse # used for mounting ext filesystems
 )
 
@@ -53,6 +54,7 @@ casks=(
     docker
     kitematic
     tunnelblick
+    usb-overdrive
     # karabiner is used to remap keys, but I'm using it to set the trackpad scroll
     #  direction to be opposite of the mouse with the following settings:
     #  - Karabiner Preferences > Change Key > Karabiner core settings >
