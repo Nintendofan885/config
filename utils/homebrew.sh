@@ -55,6 +55,7 @@ casks=(
     kitematic
     tunnelblick
     usb-overdrive
+    handbrake
     # karabiner is used to remap keys, but I'm using it to set the trackpad scroll
     #  direction to be opposite of the mouse with the following settings:
     #  - Karabiner Preferences > Change Key > Karabiner core settings >
