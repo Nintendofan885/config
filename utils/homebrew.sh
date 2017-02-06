@@ -43,6 +43,7 @@ casks=(
     flux # screen temperature adjuster
     intellij-idea
     pycharm
+    webstorm
     google-play-music-desktop-player
     skype
     filezilla
