@@ -41,6 +41,8 @@ casks=(
     google-drive
     firefox
     # flux # screen temperature adjuster
+    java
+    java-jdk-javadoc
     intellij-idea
     pycharm
     webstorm
