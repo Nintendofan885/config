@@ -36,6 +36,7 @@ casks=(
     shiftit # window snapping
     caffeine # disable automatic sleep with toggle
     limechat # irc client
+    telegram
     keepassx
     google-chrome
     google-drive
