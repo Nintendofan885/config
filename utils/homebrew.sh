@@ -27,6 +27,7 @@ packages=(
     vitorgalvao/tiny-scripts/cask-repair # used to update casks
     nmap
     gnu-sed
+    sbt
 #    homebrew/fuse/ext2fuse # used for mounting ext filesystems
 )
 
@@ -41,7 +42,7 @@ casks=(
     google-chrome
     google-drive
     firefox
-    # flux # screen temperature adjuster
+    flux # screen temperature adjuster
     java
     java-jdk-javadoc
     intellij-idea
@@ -57,6 +58,7 @@ casks=(
     libreoffice
     docker
     kitematic
+    cockatrice
     tunnelblick
     usb-overdrive
     handbrake
